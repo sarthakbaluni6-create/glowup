@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GlowUp — Your Style, Your Rules</title>
+<style>
+:root{--bg:#090a12;--panel:#121421;--panel2:#191b2d;--text:#f6f5ff;--muted:#a5a7bf;--purple:#9b7bff;--blue:#5bbcff;--line:#292b43;--green:#77e6b0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,#30235b 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{max-width:1180px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0 28px}.brand{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:850;letter-spacing:-.6px}.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--blue));color:#080914;font-weight:950}.pill{border:1px solid var(--line);padding:8px 12px;border-radius:99px;color:var(--muted);font-size:12px}
+.hero{padding:28px 0 26px;display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}.eyebrow{color:#b9a7ff;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:800}.hero h1{font-size:clamp(38px,6vw,68px);line-height:.99;letter-spacing:-3px;margin:14px 0}.gradient{background:linear-gradient(90deg,#c1a9ff,#74d0ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:580px;color:var(--muted);line-height:1.7;font-size:15px}.hero-card{min-height:220px;border:1px solid #39345b;border-radius:26px;background:linear-gradient(145deg,#201b3d,#111422 75%);padding:22px;position:relative;overflow:hidden}.orb{position:absolute;width:180px;height:180px;border-radius:50%;right:-32px;top:-40px;background:linear-gradient(135deg,#a07cff88,#62c7ff55);filter:blur(2px)}.hero-card h3{position:relative;font-size:23px;max-width:210px;margin:12px 0}.hero-card p{position:relative;font-size:13px;max-width:235px}.spark{font-size:27px;position:relative}
+.tabs{display:flex;gap:8px;overflow:auto;padding:5px 0 20px}.tab{white-space:nowrap;padding:11px 15px;border-radius:12px;background:#111320;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:13px}.tab.active{background:linear-gradient(110deg,#a48aff,#68c8ff);color:#0b0b16;border-color:transparent}
+.section{display:none}.section.active{display:block}.section-head{margin:8px 0 20px}.section-head h2{font-size:27px;margin:0 0 7px;letter-spacing:-.8px}.section-head p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:linear-gradient(145deg,var(--panel),#10111c);border:1px solid var(--line);border-radius:20px;padding:20px;min-width:0}.card h3{margin:0 0 8px;font-size:17px}.muted{color:var(--muted);font-size:13px;line-height:1.6}.field{display:flex;flex-direction:column;gap:8px;margin:16px 0}.field label{font-size:12px;color:#c4c5d8;font-weight:700}.field input,.field select,.field textarea{width:100%;border:1px solid #30324a;background:#0c0d17;color:var(--text);padding:12px;border-radius:12px;outline:none}.field input:focus,.field select:focus{border-color:var(--purple)}.primary{padding:12px 16px;border-radius:12px;background:linear-gradient(100deg,#a58aff,#70caff);color:#090a14;font-weight:850}.secondary{padding:11px 14px;border-radius:12px;background:#202238;color:var(--text);border:1px solid #343650;font-weight:750}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.preview{min-height:250px;border:1px dashed #464864;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:16px;color:var(--muted);overflow:hidden;background:#0d0e18}.preview img{max-width:100%;max-height:330px;object-fit:contain;border-radius:12px}.preview .placeholder-icon{font-size:36px;margin-bottom:8px}.result{margin-top:14px;padding:15px;border-radius:14px;background:#1a1b2b;border:1px solid #30324a;line-height:1.7;font-size:14px}.result strong{color:#c5b6ff}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip{font-size:12px;padding:7px 10px;background:#24223b;color:#d4c8ff;border-radius:99px}
+.roadmap-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.progress{height:8px;border-radius:99px;background:#292b41;overflow:hidden;margin:13px 0}.progress span{height:100%;display:block;width:0;background:linear-gradient(90deg,var(--purple),var(--blue));transition:width .2s}.day-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.day{padding:16px;border:1px solid var(--line);border-radius:16px;background:#111320}.day .num{color:#b8a3ff;font-size:11px;font-weight:900;letter-spacing:1px}.day h4{margin:8px 0}.checklist{display:flex;flex-direction:column;gap:11px;margin-top:12px}.check{display:flex;align-items:flex-start;gap:10px;color:#dedff0;font-size:13px;line-height:1.5}.check input{accent-color:#9b7bff;margin-top:3px}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:20px 0;color:var(--muted);font-size:12px;line-height:1.7}.notice{padding:13px 15px;border-radius:13px;background:#202034;border:1px solid #393652;color:#d6d3f4;font-size:12px;line-height:1.6;margin-top:14px}
+@media(max-width:760px){.app{padding:16px}.hero{grid-template-columns:1fr;padding-top:10px}.hero-card{min-height:175px}.grid{grid-template-columns:1fr}.day-list{grid-template-columns:1fr}.hero h1{letter-spacing:-2px}.pill{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="brand"><div class="logo">G</div> GlowUp <span style="color:#8e91aa;font-weight:500">/ beta</span></div><div class="pill">✦ YOUR STYLE, YOUR RULES</div></header>
+<section class="hero">
+  <div><div class="eyebrow">Your personal style companion</div><h1>Show up as<br><span class="gradient">your best self.</span></h1><p>Outfit ideas for your next event, personal style discovery, and a realistic 90-day routine for feeling confident and taking care of yourself.</p><div class="actions"><button class="primary" onclick="switchTab('outfits')">Find my outfit ↗</button><button class="secondary" onclick="switchTab('lookmax')">Explore 90-day plan</button></div></div>
+  <div class="hero-card"><div class="orb"></div><div class="spark">✦ ✧</div><h3>Your vibe.<br>Your choices.</h3><p>Build a style that feels like you — not someone else's standard.</p><div class="chips"><span class="chip">Outfits</span><span class="chip">Skincare</span><span class="chip">Daily habits</span></div></div>
+</section>
+<nav class="tabs">
+<button class="tab active" data-tab="outfits" onclick="switchTab('outfits')">👔 Outfit Planner</button>
+<button class="tab" data-tab="face" onclick="switchTab('face')">📸 Face & Style</button>
+<button class="tab" data-tab="lookmax" onclick="switchTab('lookmax')">⚡ Lookmaxing</button>
+<button class="tab" data-tab="care" onclick="switchTab('care')">🧴 Skin & Care</button>
+</nav>
+
+<section id="outfits" class="section active">
+<div class="section-head"><h2>Dress for the moment.</h2><p>Choose your event and preferences to get a practical outfit starting point.</p></div>
+<div class="grid">
+<div class="card"><h3>✨ Build your outfit</h3><p class="muted">No photo needed. Keep it comfortable and make it your own.</p>
+<div class="field"><label>What's the occasion?</label><select id="event"><option>College / school day</option><option>Birthday party</option><option>Wedding / festive event</option><option>Date / café</option><option>Casual outing</option><option>Family function</option><option>Interview / presentation</option></select></div>
+<div class="field"><label>Your style</label><select id="vibe"><option>Minimal & clean</option><option>Streetwear</option><option>Smart casual</option><option>Traditional / ethnic</option><option>Sporty</option><option>Indo-western</option></select></div>
+<div class="field"><label>Weather</label><select id="weather"><option>Warm</option><option>Hot</option><option>Cool</option><option>Rainy</option></select></div>
+<div class="field"><label>Budget</label><select id="budget"><option>Use what I own (₹0)</option><option>Under ₹1,000</option><option>₹1,000–₹3,000</option><option>Flexible</option></select></div>
+<button class="primary" onclick="makeOutfit()">Create outfit idea ✦</button></div>
+<div class="card"><h3>Your outfit inspiration</h3><div id="outfitResult" class="result">Your personalised outfit idea will appear here.</div><div class="notice">Tip: fit, comfort, weather and the event matter more than expensive brands. You don't need to buy anything new to look put-together.</div></div>
+</div>
+</section>
+
+<section id="face" class="section">
+<div class="section-head"><h2>Face & personal style</h2><p>Explore hairstyle, glasses and grooming ideas that work with your preferences.</p></div>
+<div class="grid">
+<div class="card"><h3>📷 Add a photo (optional)</h3><p class="muted">Preview your photo locally in this demo. It is not uploaded to a server.</p><div class="field"><label>Choose a clear photo</label><input type="file" id="facePhoto" accept="image/*" onchange="previewImage(event,'facePreview')"></div><div id="facePreview" class="preview"><div class="placeholder-icon">◎</div><div>Your photo preview appears here</div></div><button class="secondary" onclick="clearPhoto('facePhoto','facePreview')">Remove photo</button></div>
+<div class="card"><h3>Find your style direction</h3><p class="muted">This demo gives general suggestions from your choices, not an AI face diagnosis or attractiveness rating.</p>
+<div class="field"><label>Hair length</label><select id="hair"><option>Short</option><option>Medium</option><option>Long</option><option>Curly / textured</option></select></div>
+<div class="field"><label>Glasses?</label><select id="glasses"><option>I wear glasses</option><option>No glasses</option><option>Sometimes</option></select></div>
+<div class="field"><label>Your preferred vibe</label><select id="faceVibe"><option>Low-maintenance</option><option>Classic</option><option>Trendy</option><option>Creative</option></select></div>
+<button class="primary" onclick="makeStyle()">Suggest my style</button><div id="styleResult" class="result">Your style suggestions will appear here.</div></div>
+</div>
+<div class="notice">A photo-based “attractiveness score” can be misleading and unfair. GlowUp focuses on styling choices you control, not ranking your face or comparing you with other people.</div>
+</section>
+
+<section id="lookmax" class="section">
+<div class="section-head"><h2>90 days. Better habits.</h2><p>A flexible roadmap to support energy, confidence, grooming and consistency — not to change your face or chase perfection.</p></div>
+<div class="card">
+<div class="roadmap-top"><div><h3 style="margin-bottom:4px">Your GlowUp journey</h3><div class="muted">Tick off habits as you complete them today.</div></div><div class="pill" id="progressText">0% completed today</div></div>
+<div class="progress"><span id="progressBar"></span></div>
+<div class="day-list">
+<div class="day"><div class="num">DAYS 01–30</div><h4>Build the basics 🌱</h4><p class="muted">Create a simple routine, discover your style and start small.</p><ul class="muted"><li>Keep a consistent sleep schedule</li><li>Gentle daily skincare</li><li>Easy movement you enjoy</li><li>Prepare outfits the night before</li></ul></div>
+<div class="day"><div class="num">DAYS 31–60</div><h4>Find your rhythm ⚡</h4><p class="muted">Practise habits that feel realistic and sustainable.</p><ul class="muted"><li>Build a balanced meal routine</li><li>Gradually practise strength or sport</li><li>Try hairstyles and outfit combos</li><li>Take breaks from screens</li></ul></div>
+<div class="day"><div class="num">DAYS 61–90</div><h4>Make it yours ✨</h4><p class="muted">Keep what works and let go of what doesn't.</p><ul class="muted"><li>Review your favourite outfits</li><li>Keep a regular sleep routine</li><li>Celebrate consistency, not perfection</li><li>Choose habits to continue</li></ul></div>
+</div>
+<h3 style="margin-top:24px">Today's checklist</h3><div class="checklist" id="habitList">
+<label class="check"><input type="checkbox" class="habit"> Wake up around my usual time and get some daylight</label>
+<label class="check"><input type="checkbox" class="habit"> Eat regular, balanced meals and drink water when thirsty</label>
+<label class="check"><input type="checkbox" class="habit"> Move for 15–30 minutes in a way I enjoy (walk, sport, or beginner workout)</label>
+<label class="check"><input type="checkbox" class="habit"> Wash gently, moisturise, and use sunscreen in the daytime</label>
+<label class="check"><input type="checkbox" class="habit"> Spend a few minutes on a hobby, study, or a confidence-building skill</label>
+<label class="check"><input type="checkbox" class="habit"> Wind down for enough sleep for my age</label>
+</div>
+<div class="actions"><button class="secondary" onclick="resetHabits()">Reset today's checklist</button></div>
+</div>
+<div class="notice">This is a flexible template, not medical advice. Rest when unwell or sore. No crash diets, forced workouts, skin bleaching, harsh DIY face treatments, or supplements are needed. If you are still growing, prioritise regular meals, sleep and guidance from a trusted adult or health professional when needed.</div>
+</section>
+
+<section id="care" class="section">
+<div class="section-head"><h2>Simple skin & self-care</h2><p>Gentle basics beat harsh hacks. Patch-test new products and stop anything that irritates your skin.</p></div>
+<div class="grid">
+<div class="card"><h3>☀️ Morning routine</h3><div class="checklist">
+<label class="check"><input type="checkbox"> Rinse with water or use a gentle cleanser</label>
+<label class="check"><input type="checkbox"> Apply a fragrance-free moisturiser if needed</label>
+<label class="check"><input type="checkbox"> Use broad-spectrum SPF 30+ sunscreen</label>
+</div><div class="notice">Reapply sunscreen as directed, especially outdoors. A hat and shade help too.</div></div>
+<div class="card"><h3>🌙 Evening routine</h3><div class="checklist">
+<label class="check"><input type="checkbox"> Gently cleanse off sweat, dirt and sunscreen</label>
+<label class="check"><input type="checkbox"> Apply moisturiser if your skin feels dry</label>
+<label class="check"><input type="checkbox"> Keep your pillowcase and phone reasonably clean</label>
+</div><div class="notice">Avoid lemon juice, baking soda, toothpaste, rough scrubs and unknown mixtures on your face. They can irritate skin.</div></div>
+<div class="card"><h3>🥗 Everyday nourishment</h3><p class="muted">Eat enough and aim for variety: grains, lentils/beans, dairy or fortified alternatives, vegetables, fruit, nuts and seeds as suitable. No single food or homemade mask transforms your face.</p></div>
+<div class="card"><h3>🛌 Recovery & confidence</h3><p class="muted">Keep a regular sleep schedule, enjoy movement, practise good hygiene and choose clothes you feel comfortable in. Skin concerns that persist or hurt are best discussed with a healthcare professional.</p></div>
+</div>
+</section>
+
+<footer>GlowUp prototype · Made for self-expression, not perfection.<br>Privacy note: photo previews stay in this browser demo and are not sent to a server. A real launch needs a secure backend, clear consent, a privacy policy and careful handling of uploaded photos.</footer>
+</div>
+<script>
+function switchTab(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));document.getElementById(id).classList.add('active');document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'})}
+function makeOutfit(){
+ const event=document.getElementById('event').value,vibe=document.getElementById('vibe').value,weather=document.getElementById('weather').value,budget=document.getElementById('budget').value;
+ const sets={
+ 'College / school day':['A clean tee or casual shirt, straight-fit trousers/jeans and comfortable sneakers.','Keep it practical and follow your school dress code.'],
+ 'Birthday party':['A textured shirt or neat top with dark jeans/trousers and clean sneakers or loafers.','Add one accessory if you like; comfort first.'],
+ 'Wedding / festive event':['A kurta with tailored trousers and clean traditional footwear, or a coordinated festive outfit.','Choose breathable fabric and colours you enjoy.'],
+ 'Date / café':['A well-fitting shirt or top, relaxed trousers and clean sneakers/loafers.','A light overshirt can add an easy layer.'],
+ 'Casual outing':['A plain tee, open overshirt, relaxed jeans/cargos and everyday sneakers.','Try two complementary colours rather than many competing prints.'],
+ 'Family function':['A neat kurta or smart-casual shirt with trousers and tidy footwear.','Choose an outfit that feels respectful and comfortable.'],
+ 'Interview / presentation':['A pressed shirt/top, neat trousers and clean closed shoes.','Keep accessories simple and check the event expectations.']
+ };
+ let base=sets[event]||sets['Casual outing'];let weatherTip=weather==='Hot'?'Hot weather: try cotton/linen blends and lighter layers.':weather==='Cool'?'Cool weather: add a light jacket, cardigan or overshirt.':weather==='Rainy'?'Rainy weather: choose quick-drying layers and shoes with grip.':'Warm weather: a breathable shirt and one light layer should work.';
+ let budgetTip=budget==='Use what I own (₹0)'?'₹0 challenge: start with your cleanest basics; iron/steam if suitable and reuse what you own.':budget==='Under ₹1,000'?'Budget tip: shop your wardrobe first, then consider one versatile missing piece.':budget==='₹1,000–₹3,000'?'Budget tip: prioritise versatile pieces you can rewear in several outfits.':'Budget tip: focus on fit, comfort and rewear value, not labels.';
+ document.getElementById('outfitResult').innerHTML='<strong>'+event+' · '+vibe+'</strong><br><br>'+base[0]+'<br>'+base[1]+'<br><br><strong>Weather:</strong> '+weatherTip+'<br><strong>Budget:</strong> '+budgetTip+'<br><strong>Finishing touch:</strong> clean footwear, tidy hair and an outfit you can move comfortably in.';
+}
+function makeStyle(){
+ const hair=document.getElementById('hair').value,glasses=document.getElementById('glasses').value,vibe=document.getElementById('faceVibe').value;
+ let hairTip=hair==='Short'?'Try a neat crop, textured top or side-part; show a barber a reference image.':hair==='Medium'?'Try a layered cut or natural side part, depending on your hair texture.':hair==='Long'?'Try a tidy shape with layers or a simple tie-back if you prefer it.':'Ask for a cut that works with your natural curl pattern; avoid fighting your texture.';
+ let glassesTip=glasses==='I wear glasses'?'Choose frames that feel comfortable and suit your personal taste; an optician can help with fit.':glasses==='Sometimes'?'Try a few frame shapes in person and choose the pair you feel most yourself in.':'If you ever want glasses, an optician can help you choose comfortable frames.';
+ let vibeTip={'Low-maintenance':'Choose a haircut that is easy to maintain and a simple grooming routine.','Classic':'Try clean lines, versatile basics and a hairstyle that is easy to keep tidy.','Trendy':'Save a few reference looks and adapt one detail at a time to your comfort.','Creative':'Experiment with colour accents, accessories or a distinctive hairstyle if you want.'}[vibe];
+ document.getElementById('styleResult').innerHTML='<strong>Your style direction</strong><br><br>'+hairTip+'<br>'+glassesTip+'<br>'+vibeTip+'<br><br><span class="muted">This is a general style guide, not a face-shape or attractiveness analysis.</span>';
+}
+function previewImage(e,targetId){const file=e.target.files&&e.target.files[0];if(!file)return;if(!file.type.startsWith('image/'))return;const reader=new FileReader();reader.onload=()=>{const box=document.getElementById(targetId);box.innerHTML='';const img=document.createElement('img');img.src=reader.result;img.alt='Your selected photo preview';box.appendChild(img)};reader.readAsDataURL(file)}
+function clearPhoto(inputId,targetId){document.getElementById(inputId).value='';document.getElementById(targetId).innerHTML='<div class="placeholder-icon">◎</div><div>Your photo preview appears here</div>'}
+function updateProgress(){const all=[...document.querySelectorAll('.habit')],done=all.filter(x=>x.checked).length,p=Math.round(done/all.length*100);document.getElementById('progressBar').style.width=p+'%';document.getElementById('progressText').textContent=p+'% completed today'}
+document.querySelectorAll('.habit').forEach(x=>x.addEventListener('change',updateProgress));
+function resetHabits(){document.querySelectorAll('.habit').forEach(x=>x.checked=false);updateProgress()}
+makeOutfit();makeStyle();updateProgress();
+</script>
+</body>
+</html>
